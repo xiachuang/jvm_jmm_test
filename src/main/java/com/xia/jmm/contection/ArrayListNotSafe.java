@@ -12,12 +12,13 @@ public class ArrayListNotSafe {
         //解决方案
 //        List<String> list1=Collections.synchronizedList(new ArrayList<>());//
         List<String> list=new CopyOnWriteArrayList<>();//arraylist 并发解决的方式二
+//        List<String> list1=new ArrayList<>();  不安全
         for(int i=0;i<20;i++){
             new Thread(()->{
                 list.add(UUID.randomUUID().toString().substring(0,8));
                 System.out.println(Thread.currentThread().getName()+" "+list);
             },String.valueOf(i)).start(); }
-
+        // 异常 ConcurrentModificationException
     }
 // ConcurrentModificationException  高并发修改异常  concurrentModificationException  concurrent
     public static void list(){

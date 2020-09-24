@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-class  myCache{
-    private  final int Age=10;
+ class  myCache{
+//    private  final int Age=10;
 //    private volatile AtomicReference<Thread> atomicReference=new AtomicReference<>();
     private volatile Map<String,Object> map=new HashMap<>();
     private ReentrantReadWriteLock rwLock=new ReentrantReadWriteLock();//读写锁
@@ -34,7 +34,7 @@ class  myCache{
                  try {
                      System.out.println(Thread.currentThread().getName()+"\t正在读取");
                      try {
-                         TimeUnit.MICROSECONDS.sleep(300);
+                         TimeUnit.MILLISECONDS.sleep(300);
                      }catch (InterruptedException e){
                          e.printStackTrace();
                      }

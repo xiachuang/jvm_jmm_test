@@ -13,7 +13,7 @@ public class CyclicBarrierDemo {
         for(int i=1;i<=10;i++){
                     new Thread(()->{
                         try {
-                            TimeUnit.MICROSECONDS.sleep(300);
+                            TimeUnit.MILLISECONDS.sleep(300);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

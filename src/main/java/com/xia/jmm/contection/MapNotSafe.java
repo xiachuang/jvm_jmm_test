@@ -1,15 +1,24 @@
 package com.xia.jmm.contection;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class MapNotSafe {
     public static void main(String[] args) {
         MapNotSafe mapNotSafe=new MapNotSafe();//引用对象  指向实例对象  mapNotSafe 存的是 实例对象的地址
         //引用类型 指向的指针  值存在 堆中 string 是存在常量池中的
         //基本类型是在栈中的
+        Map<String,Object> map=Collections.synchronizedMap(new HashMap<String,Object>());//安全
+        Map<String,Object> map1=new ConcurrentHashMap<>();//2
+        List<Object> list=Collections.synchronizedList(new ArrayList<>());//1
+        List<Object> list1=new CopyOnWriteArrayList<>();//2
+        Set<Object> set=Collections.synchronizedSet(new HashSet<>());
+        Set<Object> set1=new CopyOnWriteArraySet<>();
+
+
+
         map1();
     }
     public static  void mapTest(){
